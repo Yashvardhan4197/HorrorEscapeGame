@@ -37,6 +37,8 @@ public class PlayerView : MonoBehaviour
             GameService.Instance.GetInstructionView().HideInstruction();
         }
     }
+
+   
     public void SetController(PlayerController _playerController) => playerController = _playerController;
 
 }

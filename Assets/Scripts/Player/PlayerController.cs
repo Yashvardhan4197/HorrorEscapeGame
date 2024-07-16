@@ -14,6 +14,7 @@ public class PlayerController
     private float mouseX;
     private PlayerState playerState;
 
+
     public int KeysEquipped { get => playerScriptableObject.KeysEquipped; set => playerScriptableObject.KeysEquipped = value; }
     public PlayerState PlayerState { get => playerState; private set => playerState = value; }
 
@@ -25,8 +26,9 @@ public class PlayerController
 
         this.playerScriptableObject = playerScriptableObject;
         this.playerScriptableObject.KeysEquipped = 0;
-
         playerState = PlayerState.InDark;
+
+        LightSwitchView.lightToggled += LightSwitchToggle;
     }
 
     public void Interact() => IsInteracted = Input.GetKeyDown(KeyCode.E) ? true : (Input.GetKeyUp(KeyCode.E) ? false : IsInteracted);
@@ -72,5 +74,17 @@ public class PlayerController
 
         rotation = playerRigidbody.rotation * Quaternion.Euler(lookRotation);
         position = (transform.position) + (velocity * movement) * Time.fixedDeltaTime;
+    }
+
+    private void LightSwitchToggle()
+    {
+        if (playerState == PlayerState.InDark)
+        {
+            playerState = PlayerState.None;
+        }
+        else
+        {
+            playerState = PlayerState.InDark;
+        }
     }
 }
