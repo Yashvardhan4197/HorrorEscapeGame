@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EventService 
 {
-    private EventService instance;
-    public EventService Instance { get
+    private static EventService instance;
+    public static EventService Instance { get
         {
             if(instance == null)
             {
@@ -15,7 +15,7 @@ public class EventService
         }
     }
 
-    public EventController LightSwitchToggled;
+    public EventController LightSwitchToggled { get; private set; }
     public EventService()
     {
         LightSwitchToggled = new EventController();
