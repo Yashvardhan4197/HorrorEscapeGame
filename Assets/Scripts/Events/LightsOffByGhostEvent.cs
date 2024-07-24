@@ -12,7 +12,6 @@ public class LightsOffByGhostEvent : MonoBehaviour
         if (other.GetComponent<PlayerView>() != null && keysRequired == GameService.Instance.GetPlayerController().KeysEquipped)
         {
             EventService.Instance.OnLightsOffByGhostEvent.InvokeEvent();
-            GameService.Instance.GetSoundView().PlaySoundEffects(soundType);
             this.gameObject.SetActive(false);
         }
     }
